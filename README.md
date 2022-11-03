@@ -10,7 +10,7 @@ My goal is to create a tracker for the 65 bus, a route I use to go to the local 
 ![image](/Users/mac/Desktop/GA/unit2/MBTA/mbta-tracker/src/Assets/Component Hierarchy Diagram.png)
 
 ### Component Hierarchy
-![image](/Users/mac/Desktop/GA/unit2/MBTA/mbta-tracker/src/Assets/Component Hierarchy Diagram.png)
+![image](https://i.postimg.cc/d16pyvxX/Wireframe-65.png)
 
 ### Trello
 [Trello Link](https://trello.com/invite/b/RRxskEVu/ATTI8c48937456ad3796ddab152f149e532a98859F3C/transit-api "Trello Board Link")

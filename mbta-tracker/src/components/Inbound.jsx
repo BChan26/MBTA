@@ -5,8 +5,8 @@ export default function Inbound (props) {
     <div id="InboundContent">
         
         {
-                props.movies.map((value)=> (
-                    <div           className="BusData">
+                props.ibuses.map((value)=> (
+                    <div     key={value.id}      className="BusData">
                     
                     <h3>Bus Line: {value.relationships.route.data.id}</h3>
                     <h4>Arrival Time: {value.attributes.arrival_time} </h4>

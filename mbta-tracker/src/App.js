@@ -16,24 +16,24 @@ import './App.css';
 
 function App() {
 
-//Axios call to get ETA for bus inbound, based on Week 5 Monday API Lesson
+//Axios call to get ETA for bus INbound, based on Week 5 Monday API Lesson
 const [ibuses, setInbound] = useState([])
 useEffect(() => {
   const getInbound = async () => {
     const response = await axios.get(`${TIME_PATH}1026`)
     console.log(response)
-    console.log(response.data.data)
+    // console.log(response.data.data)
     setInbound(response.data.data)
   }
 getInbound()}, [])
 
-//Axios call to get ETA for bus inbound, based on Week 5 Monday API Lesson
+//Axios call to get ETA for bus OUTbound
 const [obuses, setOutbound] = useState([])
 useEffect(() => {
   const getOutbound = async () => {
     const response = await axios.get(`${TIME_PATH}1287`)
     console.log(response)
-    console.log(response.data.data)
+    // console.log(response.data.data)
     setOutbound(response.data.data)
   }
 getOutbound()}, [])

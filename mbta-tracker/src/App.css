@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+*{
+  background-image: linear-gradient(to bottom, #2681bc, #ffc72c);
+  background-attachment: fixed;
+}
+
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 #BusImage {
 height:200px;
 width:auto;

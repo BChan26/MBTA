@@ -38,8 +38,17 @@ useEffect(() => {
   }
 getOutbound()}, [])
 
+////////////////////////////////Google Form
+const initialState = {
+  stopID: ''}
 
-
+const [formState, setFormState] = useState (initialState)
+const handleSubmit = (event) => {
+  event.preventDefault()
+  setFormState(initialState)}
+const handleChange = (event) => {
+  setFormState({...formState, [event.target.id]:event.target.value})}
+  //setting the value for our property with the colon, since it's an object
 
 
 
@@ -51,7 +60,10 @@ getOutbound()}, [])
         <Banner/>
       </div>
       <div id="Directory-Nav">
-      <Nav/>
+      <Nav formState={formState} 
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+                                />
       </div>
 
     </div>

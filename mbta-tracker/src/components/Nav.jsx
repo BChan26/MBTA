@@ -5,11 +5,11 @@ export default function Nav () {
         <div className = "nav">
 
             <Link to= "/Inbound">
-                <div>Inbound to Library (from Brighton Center)</div>
+                <div>Inbound to Library</div>
             </Link>
 
             <Link to= "/Outbound">
-                <div>Outbound to Home (from Brookline Library)</div>
+                <div>Outbound to Home</div>
             </Link>
 
 

@@ -7,6 +7,9 @@
   background-attachment: fixed;
 }
 
+#inboundBus, #outboundBus, #BusImage {
+  border-radius: 10%;
+}
 
 .nav {
   display: flex;

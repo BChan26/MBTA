@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 
-export default function Nav ({formState, handleChange, handleSubmit}) {
+export default function Nav ({formState, handleChange, handleSubmit, newValue, setNewValue, getSchedule}) {
 
 
     return (
 
 <div>
 
-<form>
+<form onSubmit={handleSubmit}>
         <label htmlFor="stopID">Bus Stop: </label>
         <select id="stopID"
                 onChange={handleChange}
@@ -18,10 +18,14 @@ export default function Nav ({formState, handleChange, handleSubmit}) {
         <option value="65">65</option>
         </select>
 
-        <button onClick={()=> {
+        <button onClick={(event)=> {
+
             console.log(formState.stopID)
+            setNewValue(formState.stopID)
+            console.log(newValue)
             handleSubmit()
-        }}>Go</button>
+            getSchedule(`${setNewValue}`)
+        }}>Save Value</button>
 </form>
 
 
@@ -36,7 +40,7 @@ export default function Nav ({formState, handleChange, handleSubmit}) {
             </Link>
 
             <Link to= "/Schedule">
-                <div>57 Schedule</div>
+                <div>Schedule Based on Dropdown Option</div>
             </Link>
 
         </div>

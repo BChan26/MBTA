@@ -8,7 +8,7 @@ export default function Nav ({formState, handleChange, handleSubmit, newValue, s
 <div>
 
 <form onSubmit={handleSubmit}>
-        <label htmlFor="stopID">Bus Stop: </label>
+        <label htmlFor="stopID">Bus #: </label>
         <select id="stopID"
                 onChange={handleChange}
                 value={formState.stopID}
@@ -16,6 +16,8 @@ export default function Nav ({formState, handleChange, handleSubmit, newValue, s
         <option value=""></option>
         <option value="57">57</option>
         <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="86">86</option>
         </select>
 
         <button onClick={(event)=> {
@@ -25,7 +27,7 @@ export default function Nav ({formState, handleChange, handleSubmit, newValue, s
             console.log(newValue)
             handleSubmit()
             getSchedule(`${setNewValue}`)
-        }}>Save Value</button>
+        }}>Update Schedule</button>
 </form>
 
 
@@ -40,7 +42,7 @@ export default function Nav ({formState, handleChange, handleSubmit, newValue, s
             </Link>
 
             <Link to= "/Schedule">
-                <div>Schedule Based on Dropdown Option</div>
+                <div>See Schedule</div>
             </Link>
 
         </div>

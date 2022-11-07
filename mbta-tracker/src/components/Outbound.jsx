@@ -1,5 +1,4 @@
 export default function Outbound (props) {
-    
     if (!props.obuses) {
         return <h2>Loading...</h2>
     } 
@@ -12,16 +11,23 @@ export default function Outbound (props) {
             <img src="https://i.postimg.cc/dtKwhjMx/Screen-Shot-2022-11-03-at-2-38-53-PM.png" alt="Bus Map Origin" id="outboundBus"/>
         </div>
         <div>Arrival Times At The Library</div>
-        {
-                props.obuses.map((value)=> (
+    {
+    props.obuses.map((value)=> {
+
+    if (value.attributes.arrival_time === null && value.attributes.departure_time === null ) {
+        return(<div></div>)}
+
+    else if (value.attributes.arrival_time !== null && value.attributes.departure_time !== null ) {
+    return (
                     <div     key={value.id}      className="BusData">
 
                     <h4>{value.attributes.arrival_time.slice(11,16)} </h4>
 
                     </div>
-                ))
-            }
-
-    </div>
     )}
+
+    })
+}
+</div>
+)}
 }

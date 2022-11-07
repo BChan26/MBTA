@@ -13,11 +13,9 @@ export default function Outbound (props) {
         </div>
         <div>Arrival Times At The Library</div>
         {
-                
                 props.obuses.map((value)=> (
                     <div     key={value.id}      className="BusData">
-                    
-                    {/* <h3>{value.relationships.route.data.id} Bus</h3> */}
+
                     <h4>{value.attributes.arrival_time.slice(11,16)} </h4>
 
                     </div>

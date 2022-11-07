@@ -2,14 +2,15 @@ import { Route, Routes } from 'react-router-dom'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
-import { BASE_URL } from './global'
-import { INFO_PATH } from './global'
+import { SCHEDULE_PATH } from './global'
+
 import { TIME_PATH } from './global'
 
 import Nav from './components/Nav'
 import Banner from './components/Banner'
 import Inbound from './components/Inbound'
 import Outbound from './components/Outbound'
+import Schedule from './components/Schedule'
 import './App.css';
 
 
@@ -21,7 +22,7 @@ const [ibuses, setInbound] = useState([])
 useEffect(() => {
   const getInbound = async () => {
     const response = await axios.get(`${TIME_PATH}1026`)
-    console.log(response)
+    // console.log(response)
     // console.log(response.data.data)
     setInbound(response.data.data)
   }
@@ -32,23 +33,45 @@ const [obuses, setOutbound] = useState([])
 useEffect(() => {
   const getOutbound = async () => {
     const response = await axios.get(`${TIME_PATH}1287`)
-    console.log(response)
+    // console.log(response)
     // console.log(response.data.data)
     setOutbound(response.data.data)
   }
 getOutbound()}, [])
 
-////////////////////////////////Google Form
+
+
+//Google Form
 const initialState = {
   stopID: ''}
 
 const [formState, setFormState] = useState (initialState)
+
 const handleSubmit = (event) => {
   event.preventDefault()
-  setFormState(initialState)}
+  setFormState({...initialState, })
+}
+
 const handleChange = (event) => {
-  setFormState({...formState, [event.target.id]:event.target.value})}
+  setFormState({...formState, [event.target.id]:event.target.value})
+}
   //setting the value for our property with the colon, since it's an object
+
+
+
+//Axios call to get schedule for 57 bus
+const [schedule, setSchedule] = useState(null)
+useEffect(() => {
+  const getSchedule = async () => {
+    const response = await axios.get(`${SCHEDULE_PATH}${formState.stopID}`)
+    // console.log(response)
+    console.log(response.data)
+    setSchedule(response.data.data)
+  }
+getSchedule()}, [])
+
+
+
 
 
 
@@ -60,7 +83,7 @@ const handleChange = (event) => {
         <Banner/>
       </div>
       <div id="Directory-Nav">
-      <Nav formState={formState} 
+      <Nav  formState={formState} 
             handleChange={handleChange}
             handleSubmit={handleSubmit}
                                 />
@@ -76,9 +99,13 @@ const handleChange = (event) => {
                                                 ibuses={ibuses}
                                                       />}/>
 
-        <Route exact path="Outbound" element={<Outbound
+    <Route exact path="Outbound" element={<Outbound
                                                 obuses={obuses}
                                                               />}/>
+
+    <Route exact path="Schedule" element={<Schedule
+                                                schedule={schedule}
+                                                      />}/>
 
     </Routes>
     </main>

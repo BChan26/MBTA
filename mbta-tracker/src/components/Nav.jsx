@@ -1,15 +1,10 @@
-import {Link} from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Nav ({formState, handleChange, handleSubmit}) {
 
-let navigate = useNavigate()
-const showStop = (formState) => {
-navigate (`${formState.stopID}`)
-}
-
 
     return (
+
 <div>
 
 <form>
@@ -18,12 +13,13 @@ navigate (`${formState.stopID}`)
                 onChange={handleChange}
                 value={formState.stopID}
                 >
-          <option value="Inbound">Inbound</option>
-          <option value="Outbound">Outbound</option>
+        <option value=""></option>
+        <option value="57">57</option>
+        <option value="65">65</option>
         </select>
 
         <button onClick={()=> {
-            showStop(formState)
+            console.log(formState.stopID)
             handleSubmit()
         }}>Go</button>
 </form>
@@ -38,6 +34,11 @@ navigate (`${formState.stopID}`)
             <Link to= "/Outbound">
                 <div>Outbound to Home</div>
             </Link>
+
+            <Link to= "/Schedule">
+                <div>57 Schedule</div>
+            </Link>
+
         </div>
     
 </div>)

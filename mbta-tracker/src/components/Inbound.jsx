@@ -13,6 +13,9 @@ if (!props.ibuses) {
         <div>
             Departure Times from Brighton Center
         </div>
+        <div>
+        <h4>Current Time: {props.time}</h4>
+        </div>
 
         {
             props.ibuses.map((value)=> {
@@ -21,11 +24,15 @@ if (!props.ibuses) {
                     return(<div></div>)}
 
                 else if (value.attributes.arrival_time === null && value.attributes.departure_time !== null ) {
+                    // console.log(value.attributes.departure_time.slice(11,16))
+                    // console.log(props.time)
                     return (
                         <div     key={value.id}      className="BusData">
                         
                         {/* <h3>{value.relationships.route.data.id} Bus</h3> */}
-                        <h4>{value.attributes.departure_time.slice(11,16)} </h4>
+                        {/* <h4>{value.attributes.departure_time.slice(11,16) - props.time} minutes away</h4> */}
+
+                        <h4>Arrival Time: {value.attributes.departure_time.slice(11,16)}</h4>
 
                         </div>
                 )}
@@ -35,8 +42,5 @@ if (!props.ibuses) {
     </div>
     )}
 }
-
-
-//Goal 3 (if value.attributes.direction_id=0), <h2>Direction: Outbound</h2>
-
-// Goal 4(Only 65 Bus): if (value.relationships.route.data.id=65) {}
+//determine the type of data we have for line 35 (string, number, etc)
+//try to parseInt() both of the values to ensure they're numbers, then subtract

@@ -8,7 +8,7 @@ import Nav from './components/Nav'
 import Banner from './components/Banner'
 import Inbound from './components/Inbound'
 import Outbound from './components/Outbound'
-import Schedule from './components/Schedule'
+// import Schedule from './components/Schedule'
 import The65 from './components/The65'
 import './App.css';
 
@@ -16,7 +16,15 @@ import './App.css';
 
 function App() {
 
-
+/////////////Time//////////////////
+//https://reactgo.com/javascript-get-time/
+const current = new Date();
+const time = current.toLocaleTimeString("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false
+});
+console.log(time);
 
 //////////Axios call to get ETA for 65 bus INbound from Brighton Center to Library////////////
 const [ibuses, setInbound] = useState([])
@@ -109,13 +117,16 @@ getSchedule()}, [newValue])
 
           <Route exact path="Inbound" element={<Inbound
                                                 ibuses={ibuses}
+                                                time={time}
                                                       />}/>
 
           <Route exact path="Outbound" element={<Outbound
+                                                time={time}
                                                 obuses={obuses}
                                                               />}/>
 
           <Route exact path="The65" element={<The65
+                                                    time={time}
                                                     schedule={schedule}
                                                     formState={formState} 
                                                     handleChange={handleChange}

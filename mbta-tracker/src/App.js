@@ -24,7 +24,7 @@ const time = current.toLocaleTimeString("en-US", {
   minute: "2-digit",
   hour12: false
 });
-console.log(time);
+// console.log(time);
 
 //////////Axios call to get ETA for 65 bus INbound from Brighton Center to Library////////////
 const [ibuses, setInbound] = useState([])

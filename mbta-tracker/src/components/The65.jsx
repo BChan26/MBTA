@@ -1,7 +1,7 @@
 export default function The65 ({formState, handleChange, handleSubmit, newValue, setNewValue, getSchedule, schedule}) {
 
-const The651 = document.getElementById('The651')
-console.log(The651)
+// const The651 = document.getElementById('The651')
+// console.log(The651)
 
     return (
 
@@ -16,8 +16,8 @@ console.log(The651)
                 <option value=""></option>
                 {/* Inbound */}
                 <option value="1026" id="The651">1.  (Inbound) Chestnut Hill Ave @ Veronica Smith Ctr</option>
-                <option value="919" id="The651"> 2.  (Inbound) Washington St opp Waldo Terrace</option>
-                <option value="1268" id="The651">3.  (Inbound) Washington St @ Sheperd St</option>
+                <option value="919"> 2.  (Inbound) Washington St opp Waldo Terrace</option>
+                <option value="1268">3.  (Inbound) Washington St @ Sheperd St</option>
                 <option value="1269">4.  (Inbound) Washington St @ Snow St</option>
                 <option value="1270">5.  (Inbound) Washington St @ Monastery Rd</option>
                 <option value="1272">6.  (Inbound) Washington St @ Euston St</option>
@@ -78,13 +78,13 @@ console.log(The651)
                 </select>
         
                 <button onClick={(event)=> {
-        
+                    event.preventDefault()
                     // console.log(formState.stopID)
                     setNewValue(formState.stopID)
                     // console.log(newValue)
                     handleSubmit()
                     getSchedule(`${setNewValue}`)
-                    event.preventDefault()
+
                 }}>Get Times</button>
         </form>
 

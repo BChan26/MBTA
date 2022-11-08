@@ -78,7 +78,7 @@ useEffect(() => {
   const getSchedule = async () => {
     const response = await axios.get(`${TIME_PATH}${newValue}`)
     // console.log(response)
-    console.log(response.data.data)
+    // console.log(response.data.data)
     setSchedule(response.data.data)
   }
 getSchedule()}, [newValue])

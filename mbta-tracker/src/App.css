@@ -12,9 +12,13 @@
   justify-content: space-around;
 }
 
+#BannerText {
+line-height:50%
+}
+
 #BusImage {
   max-height:auto;
-  max-width:40%;
+  max-width:20%;
   border-radius: 10%;
   }
 

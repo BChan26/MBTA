@@ -22,9 +22,9 @@ export default function Nav ({formState, handleChange, handleSubmit, newValue, s
 
         <button onClick={(event)=> {
 
-            console.log(formState.stopID)
+            // console.log(formState.stopID)
             setNewValue(formState.stopID)
-            console.log(newValue)
+            // console.log(newValue)
             handleSubmit()
             getSchedule(`${setNewValue}`)
         }}>Update Schedule</button>

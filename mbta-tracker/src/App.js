@@ -78,12 +78,11 @@ useEffect(() => {
   const getSchedule = async () => {
     const response = await axios.get(`${SCHEDULE_PATH}${newValue}`)
     // console.log(response)
-    console.log(response.data)
+    console.log(response.data.data)
     setSchedule(response.data.data)
   }
 getSchedule()}, [newValue])
 //inside that array, you can optionally pass dependencies, [prop, state]
-
 
 
 

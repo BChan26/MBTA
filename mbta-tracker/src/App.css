@@ -17,7 +17,13 @@
   justify-content: space-around;
 }
 
-#BusImage {
+#BusImage, #BusMap {
 height:200px;
 width:auto;
+}
+
+#BusMap {
+  border-radius: 3%;
+  height:400px;
+  width:auto; 
 }

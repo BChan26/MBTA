@@ -1,8 +1,5 @@
 export default function The65 ({formState, handleChange, handleSubmit, newValue, setNewValue, getSchedule, schedule}) {
 
-// const The651 = document.getElementById('The651')
-// console.log(The651)
-
     return (
 
         <div>
@@ -15,7 +12,7 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                         >
                 <option value=""></option>
                 {/* Inbound */}
-                <option value="1026" id="The651">1.  (Inbound) Chestnut Hill Ave @ Veronica Smith Ctr</option>
+                <option value="1026">1.  (Inbound) Chestnut Hill Ave @ Veronica Smith Ctr</option>
                 <option value="919"> 2.  (Inbound) Washington St opp Waldo Terrace</option>
                 <option value="1268">3.  (Inbound) Washington St @ Sheperd St</option>
                 <option value="1269">4.  (Inbound) Washington St @ Snow St</option>
@@ -88,6 +85,9 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                 }}>Get Times</button>
         </form>
 
+        <div>
+        <img src='https://i.postimg.cc/jdHynjxY/65-Bus-Stops-Inbound-Outbound.png' alt="Bus Stop Map" id="BusMap"/>
+        </div>
 
         <div id="ScheduleContent">
         {
@@ -101,7 +101,6 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                     ){
                     return (
                         <div     key={value.id}      className="ScheduleData">
-                        {/* <h4> {The651.innerText} </h4> */}
                         {/* <h4>Bus Line: {value.relationships.route.data.id}</h4> */}
                         <h4>Arrival Time: {value.attributes.arrival_time.slice(11,16)}</h4>
                         {/* <h4>Direction: Inbound</h4> */}
@@ -117,7 +116,6 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                          ) { 
                     return (
                         <div     key={value.id}      className="ScheduleData">
-                        {/* <h4> {The651.innerText} </h4> */}
                         {/* <h4>Bus Line: {value.relationships.route.data.id}</h4> */}
                         <h4>Arrival Time: {value.attributes.arrival_time.slice(11,16)}</h4>
                         {/* <h4>Direction: Outbound</h4> */}

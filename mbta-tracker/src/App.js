@@ -98,6 +98,7 @@ getSchedule()}, [newValue])
 
           <div id="Directory-Nav">
           <Nav/>
+          <br/>
           </div>
 
       </div>

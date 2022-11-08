@@ -9,17 +9,25 @@ export default function Nav ({formState, handleChange, handleSubmit, newValue, s
 
 
         <div className = "nav">
+            
+            <div>
+            <Link to= "/The65">
+                <div>65 Bus Route</div>
+            </Link>
+            </div>
+
+
+            <div>
             <Link to= "/Inbound">
-                <div>Inbound to Library</div>
+                <div>Home → Library</div>
             </Link>
 
             <Link to= "/Outbound">
-                <div>Outbound to Home</div>
+                <div>Library → Home</div>
             </Link>
+            </div>
 
-            <Link to= "/The65">
-                <div>65 Bus</div>
-            </Link>
+
 
         </div>
     

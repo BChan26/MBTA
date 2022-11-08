@@ -6,24 +6,34 @@
   background-image: linear-gradient(to bottom, #2681bc, #ffc72c);
   background-attachment: fixed;
 }
-
-#inboundBus, #outboundBus, #BusImage {
-  border-radius: 10%;
-}
-
 .nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-#BusImage, #BusMap {
-height:200px;
-width:auto;
+#BusImage {
+  max-height:auto;
+  max-width:40%;
+  border-radius: 10%;
+  }
+
+#inboundBus, #outboundBus {
+  border-radius: 10%;
+  max-height:auto;
+  max-width:70%;
+  border-radius: 10%;
 }
 
 #BusMap {
   border-radius: 3%;
-  height:400px;
-  width:auto; 
+  max-height:auto;
+  max-width:60%; 
+}
+
+@media screen and (max-width: 600px) {
+  #BusMap {
+    max-height:auto;
+    max-width:80%; 
+  }
 }

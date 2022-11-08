@@ -104,7 +104,7 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                         {/* <h4>Bus Line: {value.relationships.route.data.id}</h4> */}
                         <h4>Arrival Time: {value.attributes.arrival_time.slice(11,16)}</h4>
                         {/* <h4>Direction: Inbound</h4> */}
-                        <br/>
+                        {/* <br/> */}
                         </div>
                 )}
 
@@ -119,7 +119,7 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                         {/* <h4>Bus Line: {value.relationships.route.data.id}</h4> */}
                         <h4>Arrival Time: {value.attributes.arrival_time.slice(11,16)}</h4>
                         {/* <h4>Direction: Outbound</h4> */}
-                        <br/>
+                        {/* <br/> */}
                         </div>
                         )}
             })

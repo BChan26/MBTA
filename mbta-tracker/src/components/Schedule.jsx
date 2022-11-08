@@ -1,17 +1,15 @@
 //the console log on line 13 isn't targeting the values in the array - using the index number to hopefully make the call, stealing the index number, store to plug and chug
 
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import { STOP_PATH } from '../global'
+// import axios from 'axios'
+// import { useState, useEffect } from 'react'
+// import { STOP_PATH } from '../global'
 
 export default function Schedule (props) {
 
-const [theStopID, setTheStopID] = useState(null)
-
+    // const [theStopID, setTheStopID] = useState(null)
     //AXIOS call to get the stop NAME, based on STOP_PATH url + id # from schedule's axios call
-    const [stopName, setStopName] = useState(null)
-    console.log(props.schedule)
-
+    // const [stopName, setStopName] = useState(null)
+    // console.log(props.schedule)
     // useEffect (() => {
     //     const getStopName = async () => {
     //     const theResponse = await axios.get(`${STOP_PATH}${props.schedule.relationships.stop.data.id}`)

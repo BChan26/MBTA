@@ -44,12 +44,23 @@ export default function Outbound (props) {
                         )
                     }
                     
-                    else if (parseInt(props.time.slice(0,2)) < parseInt(value.attributes.arrival_time.slice(11,13))) {
+                    else if (parseInt(value.attributes.arrival_time.slice(11,13)) - parseInt(props.time.slice(0,2)) == 1) {
                         return (
                             <div     key={value.id}      className="BusData">
 
                             {/* <h4>Arrival Time: {value.attributes.departure_time.slice(11,16)}</h4> */}
                             <h4>{(parseInt(value.attributes.arrival_time.slice(14,16))+60) - parseInt(props.time.slice(3,6)) } minutes away</h4>
+    
+                            </div>
+                        )
+                    }
+
+                    else if (parseInt(value.attributes.arrival_time.slice(11,13)) - parseInt(props.time.slice(0,2)) == 2) {
+                        return (
+                            <div     key={value.id}      className="BusData">
+
+                            {/* <h4>Arrival Time: {value.attributes.departure_time.slice(11,16)}</h4> */}
+                            <h4>{(parseInt(value.attributes.arrival_time.slice(14,16))+120) - parseInt(props.time.slice(3,6)) } minutes away</h4>
     
                             </div>
                         )

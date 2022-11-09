@@ -1,4 +1,4 @@
-export default function The65 ({formState, handleChange, handleSubmit, newValue, setNewValue, getSchedule, schedule}) {
+export default function The65 ({formState, handleChange, handleSubmit, newValue, setNewValue, getSchedule, schedule, time}) {
 
     return (
 

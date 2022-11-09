@@ -16,7 +16,7 @@ import './App.css';
 
 function App() {
 
-/////////////Time//////////////////
+//////////////////Time////////////////////
 //https://reactgo.com/javascript-get-time/
 const current = new Date();
 const time = current.toLocaleTimeString("en-US", {
@@ -35,7 +35,6 @@ useEffect(() => {
     setInbound(response.data.data)
   }
 getInbound()}, [])
-//inside that array, you can optionally pass dependencies, [prop, state]
 //useState is a hook that's tracking changes in the component
 //ibuses is my current state (where I'm storing my property value)
 //setInbound is the function to update ibuses
@@ -58,7 +57,8 @@ getOutbound()}, [])
 
 ///////////////////////////////////////Google Form/////////////////////////////////////////
 const initialState = {stopID: ''}
-//state value stored in formState, with setFormState updating that value, useState tracks changes with the initial value of formState as initialState
+//state value stored in formState, with setFormState updating that value
+//useState tracks changes with the initial value of formState as initialState
 
 const [formState, setFormState] = useState (initialState)
 //goal of handlechange: to connect the form fields to state

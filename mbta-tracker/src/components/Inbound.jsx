@@ -28,9 +28,13 @@ if (!props.ibuses) {
                     // console.log(props.time.slice(0,2))
                     // console.log(props.time.slice(3,6))
                     
+                    // console.log(value.attributes.departure_time.slice(11,16))
                     // console.log(value.attributes.departure_time.slice(11,13))
                     // console.log(value.attributes.departure_time.slice(14,16))
 
+
+                    //needed to determine the type of data we have for line 35 (string, number, etc)
+                    //make sure to parseInt() both of the values to ensure they're numbers, then subtract
                     if (parseInt(props.time.slice(0,2)) == parseInt(value.attributes.departure_time.slice(11,13))){
                         return (
                             <div     key={value.id}      className="BusData">
@@ -47,7 +51,7 @@ if (!props.ibuses) {
                             <div     key={value.id}      className="BusData">
 
                             {/* <h4>Arrival Time: {value.attributes.departure_time.slice(11,16)}</h4> */}
-                            <h4>{(parseInt(value.attributes.depature_time.slice(14,16))+60) - parseInt(props.time.slice(3,6)) } minutes away</h4>
+                            <h4>{(parseInt(value.attributes.departure_time.slice(14,16))+60) - props.time.slice(3,6) } minutes away</h4>
     
                             </div>
                         )
@@ -59,5 +63,3 @@ if (!props.ibuses) {
     </div>
     )}
 }
-//determine the type of data we have for line 35 (string, number, etc)
-//try to parseInt() both of the values to ensure they're numbers, then subtract

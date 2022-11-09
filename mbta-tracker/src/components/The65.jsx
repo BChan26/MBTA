@@ -99,14 +99,15 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
 
         <div id="ScheduleContent">
         {
-            //mapping out all values from the original axios call
-            schedule.map((value)=> {
+            //mapping out all values from the original axios call, adding index as parameter for key for each
+            schedule.map((value, index)=> {
 
                 //if both arrival and departure time are null, it's a "ghost bus" so return nothing
+                //the mapped out value still needs a key, even if it's an "empty" div, to avoid error
                 if (value.attributes.arrival_time === null 
                     && 
                     value.attributes.departure_time === null) 
-                        {return(<div></div>)}
+                        {return(<div key={index}></div>)}
 
                 //if there's a departure time and it's a bus for the 65 route
                 if (value.attributes.departure_time !== null
@@ -117,7 +118,7 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                         //If departure time's hour = current time's hour, subtract min - min to get minutes away
                         if (parseInt(value.attributes.departure_time.slice(11,13)) == parseInt(time.slice(0,2))){
                             return (
-                                <div     key={value.id}      className="BusData">
+                                <div     key={index}      className="BusData">
                                 
                                 <h4>{parseInt(value.attributes.departure_time.slice(14,16)) - parseInt(time.slice(3,6)) } minutes away</h4>
         
@@ -128,7 +129,7 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                         //If departure time's hour - current time's hour = 1, subtract (min+60) - min to get minutes away
                         else if (parseInt(value.attributes.departure_time.slice(11,13)) - parseInt(time.slice(0,2)) == 1) {
                             return (
-                                <div     key={value.id}      className="BusData">
+                                <div     key={index}      className="BusData">
     
                                 <h4>{(parseInt(value.attributes.departure_time.slice(14,16))+60) - time.slice(3,6) } minutes away</h4>
         
@@ -139,7 +140,7 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                         //If departure time's hour - current time's hour = 2, subtract (min+120) - min to get minutes away
                         else if (parseInt(value.attributes.departure_time.slice(11,13)) - parseInt(time.slice(0,2)) == 2) {
                                 return (
-                                    <div     key={value.id}      className="BusData">
+                                    <div     key={index}      className="BusData">
         
                                     <h4>{(parseInt(value.attributes.departure_time.slice(14,16))+120) - time.slice(3,6) } minutes away</h4>
             

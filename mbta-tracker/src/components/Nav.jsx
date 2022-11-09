@@ -1,12 +1,10 @@
+//Links in Nav Bar to change URLS/between pages
 import { Link } from 'react-router-dom'
 
-export default function Nav ({formState, handleChange, handleSubmit, newValue, setNewValue, getSchedule}) {
+export default function Nav () {
 
-
-    return (
-
-<div>
-
+return (
+    <div>
 
         <div className = "nav">
             
@@ -15,7 +13,6 @@ export default function Nav ({formState, handleChange, handleSubmit, newValue, s
                 <div>65 Bus Route</div>
             </Link>
             </div>
-
 
             <div>
             <Link to= "/Inbound">
@@ -27,9 +24,8 @@ export default function Nav ({formState, handleChange, handleSubmit, newValue, s
             </Link>
             </div>
 
-
-
         </div>
     
-</div>)
-    }
+    </div>
+    )
+}

@@ -1,17 +1,22 @@
-.App {
-  text-align: center;
-}
-
+/*Gradient Color Background*/
 *{
   background-image: linear-gradient(to bottom, #2681bc, #ffc72c);
   background-attachment: fixed;
 }
+
+/*Aligns Text Center*/
+.App {
+  text-align: center;
+}
+
+/*Aligns Nav Bar in Spaced Row*/
 .nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
+/*Resizing of Images and Text*/
 #BannerText {
 line-height:50%
 }
@@ -35,6 +40,7 @@ line-height:50%
   max-width:60%; 
 }
 
+/*Ensures 65 Bus Route Picture Increases in Proportionality on Smaller Screen*/
 @media screen and (max-width: 600px) {
   #BusMap {
     max-height:auto;

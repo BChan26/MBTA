@@ -1,20 +1,24 @@
+//Deconstructed each of the props being passed down, for more specificity
 export default function The65 ({formState, handleChange, handleSubmit, newValue, setNewValue, getSchedule, schedule, time}) {
     if (!schedule) {
         return <h2>Loading...</h2>
     } 
 
     else {
-
     return (
 
-        <div>
+    <div>
         
         <form onSubmit={handleSubmit}>
+
                 <label htmlFor="stopID">Bus Stop: </label>
+
+                {/* With the id stopID, upon a change (onchange) it connects to the handlechange, with a new value */}
                 <select id="stopID"
                         onChange={handleChange}
                         value={formState.stopID}
-                        >
+                                                >
+                
                 <option value=""></option>
                 {/* Inbound */}
                 <option value="1026">1.  (Inbound) Chestnut Hill Ave @ Veronica Smith Ctr</option>
@@ -46,7 +50,6 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                 <option value="1562">27. (Inbound) 132 Brookline Ave opp Fullerton St</option>
                 <option value="1563">28. (Inbound) Brookline Ave @ Jersey St</option>
                 <option value="1564">29. (Inbound) Brookline Ave @ Newbury St</option>
-                <option value="899"> 30. (Inbound) Kenmore Station</option>
                 {/* Outbound */}
                 <option value="899"> 1.  (Outbound) Kenmore Station</option>
                 <option value="8993">2.  (Outbound) Brookline Ave opp Newbury St</option>
@@ -78,6 +81,7 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                 <option value="1994">28. (Outbound) Winship St @ Union St</option>
                 </select>
         
+                {/* Upon the button onclick, need event.preventDefault() to prevent refreshing of dropdown, setting a new value with value above, running the handlesubmit, and running the Axios call with getSchedule with the new value */}
                 <button onClick={(event)=> {
                     event.preventDefault()
                     // console.log(formState.stopID)
@@ -95,140 +99,63 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
 
         <div id="ScheduleContent">
         {
+            //mapping out all values from the original axios call
             schedule.map((value)=> {
 
+                //if both arrival and departure time are null, it's a "ghost bus" so return nothing
                 if (value.attributes.arrival_time === null 
                     && 
-                    value.attributes.departure_time === null ) {
-                    return(<div></div>)}
+                    value.attributes.departure_time === null) 
+                        {return(<div></div>)}
 
+                //if there's a departure time and it's a bus for the 65 route
                 if (value.attributes.departure_time !== null
                     &&
-                    value.relationships.route.data.id == 65
-                    &&
-                    value.relationships.stop.data.id !== 1026
-                    &&
-                    value.relationships.stop.data.id !== 899
-                    ){
-
-                        if (parseInt(time.slice(0,2)) == parseInt(value.attributes.departure_time.slice(11,13))){
+                    value.relationships.route.data.id == 65)
+                    
+                    {
+                        //If departure time's hour = current time's hour, subtract min - min to get minutes away
+                        if (parseInt(value.attributes.departure_time.slice(11,13)) == parseInt(time.slice(0,2))){
                             return (
                                 <div     key={value.id}      className="BusData">
                                 
-                                {/* <h4>Arrival Time: {value.attributes.departure_time.slice(11,16)}</h4> */}
                                 <h4>{parseInt(value.attributes.departure_time.slice(14,16)) - parseInt(time.slice(3,6)) } minutes away</h4>
         
                                 </div>
                             )
                         }
                         
+                        //If departure time's hour - current time's hour = 1, subtract (min+60) - min to get minutes away
                         else if (parseInt(value.attributes.departure_time.slice(11,13)) - parseInt(time.slice(0,2)) == 1) {
                             return (
                                 <div     key={value.id}      className="BusData">
     
-                                {/* <h4>Arrival Time: {value.attributes.departure_time.slice(11,16)}</h4> */}
                                 <h4>{(parseInt(value.attributes.departure_time.slice(14,16))+60) - time.slice(3,6) } minutes away</h4>
         
                                 </div>
                             )
                         }
     
+                        //If departure time's hour - current time's hour = 2, subtract (min+120) - min to get minutes away
                         else if (parseInt(value.attributes.departure_time.slice(11,13)) - parseInt(time.slice(0,2)) == 2) {
                                 return (
                                     <div     key={value.id}      className="BusData">
         
-                                    {/* <h4>Arrival Time: {value.attributes.departure_time.slice(11,16)}</h4> */}
                                     <h4>{(parseInt(value.attributes.departure_time.slice(14,16))+120) - time.slice(3,6) } minutes away</h4>
             
                                     </div>
                                 )
-                            }
+                        }
 
                     }
-                    if (value.attributes.arrival_time !== null
-                        &&
-                        value.relationships.route.data.id == 65
-                        &&
-                        value.relationships.stop.data.id == 1026) {
-                            if (parseInt(time.slice(0,2)) == parseInt(value.attributes.arrival_time.slice(11,13))){
-                                return (
-                                    <div     key={value.id}      className="BusData">
-                                    
-                                    <h4>{parseInt(value.attributes.arrival_time.slice(14,16)) - parseInt(time.slice(3,6)) } minutes away</h4>
-            
-                                    </div>
-                                )
-                            }
-                            
-                            else if (parseInt(value.attributes.arrival_time.slice(11,13)) - parseInt(time.slice(0,2)) == 1) {
-                                return (
-                                    <div     key={value.id}      className="BusData">
-        
-                                    <h4>{(parseInt(value.attributes.arrival_time.slice(14,16))+60) - time.slice(3,6) } minutes away</h4>
-            
-                                    </div>
-                                )
-                            }
-        
-                            else if (parseInt(value.attributes.arrival_time.slice(11,13)) - parseInt(time.slice(0,2)) == 2) {
-                                    return (
-                                        <div     key={value.id}      className="BusData">
-            
-                                        <h4>{(parseInt(value.attributes.arrival_time.slice(14,16))+120) - time.slice(3,6) } minutes away</h4>
-                
-                                        </div>
-                                    )
-                                }
-                        }
-
-                    if (value.attributes.arrival_time !== null
-                        &&
-                        value.relationships.route.data.id == 65
-                        &&
-                        value.relationships.stop.data.id == 899){
-                            if (parseInt(time.slice(0,2)) == parseInt(value.attributes.arrival_time.slice(11,13))){
-                                return (
-                                    <div     key={value.id}      className="BusData">
-                                    
-                                    <h4>{parseInt(value.attributes.arrival_time.slice(14,16)) - parseInt(time.slice(3,6)) } minutes away</h4>
-            
-                                    </div>
-                                )
-                            }
-                            
-                            else if (parseInt(value.attributes.arrival_time.slice(11,13)) - parseInt(time.slice(0,2)) == 1) {
-                                return (
-                                    <div     key={value.id}      className="BusData">
-        
-                                    <h4>{(parseInt(value.attributes.arrival_time.slice(14,16))+60) - time.slice(3,6) } minutes away</h4>
-            
-                                    </div>
-                                )
-                            }
-        
-                            else if (parseInt(value.attributes.arrival_time.slice(11,13)) - parseInt(time.slice(0,2)) == 2) {
-                                    return (
-                                        <div     key={value.id}      className="BusData">
-            
-                                        <h4>{(parseInt(value.attributes.arrival_time.slice(14,16))+120) - time.slice(3,6) } minutes away</h4>
-                
-                                        </div>
-                                    )
-                                }
-                        }
 
                 
             })
         }
-
-    </div>
-
-
-
-
-
+        </div>
 
         
-        </div>)
-            }
-        }
+    </div>
+    )
+    }
+}

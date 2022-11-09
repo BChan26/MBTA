@@ -27,6 +27,12 @@ const time = current.toLocaleTimeString("en-US", {
 // console.log(time);
 
 //////////Axios call to get ETA for 65 bus INbound from Brighton Center to Library////////////
+//useState is a hook that's tracking changes in the component
+//ibuses is my current state (where I'm storing my property value)
+//setInbound is the function to update ibuses
+//useEffect is another hook that's performing a side effect AKA another job/task
+//we've created the function getInbound to make the axios call, then running the state updater function setInbound, to give a new value to ibuses.
+//then ibuses is passed down as a prop to my component .jsx file through routes
 const [ibuses, setInbound] = useState([])
 useEffect(() => {
   const getInbound = async () => {
@@ -35,12 +41,7 @@ useEffect(() => {
     setInbound(response.data.data)
   }
 getInbound()}, [])
-//useState is a hook that's tracking changes in the component
-//ibuses is my current state (where I'm storing my property value)
-//setInbound is the function to update ibuses
-//useEffect is another hook that's performing a side effect AKA another job/task
-//we've created the function getInbound to make the axios call, then running the state updater function setInbound, to give a new value to ibuses.
-//then ibuses is passed down as a prop to my component .jsx file through routes
+
 
 
 
@@ -66,10 +67,10 @@ const [formState, setFormState] = useState (initialState)
 const handleChange = (event) => {
   setFormState({...formState, [event.target.id]:event.target.value})
 }
-//the ...formState helps us identify what we're going to be changing
-  //The ... basically "spreads" the object properties, along with their corresponding values, inside a new object literal { }. 
-  //Then we are using [ event.target.id ] to compute the property name we would like to replace in said object, again--with its corresponding value event.target.value.
-    //we're setting the value for our property with the colon, since it's an object
+//The ...formState helps us identify what we're going to be changing
+//The ... basically "spreads" the object properties, along with their corresponding values, inside a new object literal { }. 
+//Then we are using [ event.target.id ] to compute the property name we would like to replace in said object, again--with its corresponding value event.target.value.
+//We're setting the value for our property with the colon, since it's an object
 const handleSubmit = (event) => {
   event.preventDefault();
   setFormState({...initialState, [event.target.id]:event.target.value})
@@ -95,49 +96,48 @@ getSchedule()}, [newValue])
 
 
 
-  return (
+return (
   <div className="App">
       
-      <div id="HeaderOrganization">
+    <div id="HeaderOrganization">
 
-          <div id="Banner-App">
-          <Banner/>
-          </div>
-
-          <div id="Directory-Nav">
-          <Nav/>
-          <br/>
-          </div>
-
+      <div id="Banner-App">
+      <Banner/>
       </div>
 
+      <div id="Directory-Nav">
+      <Nav/>
+      <br/>
+      </div>
 
-      <main className="Main-header">
+    </div>
+
+    <main className="Main-header">
       <Routes>
 
-          <Route exact path="Inbound" element={<Inbound
-                                                ibuses={ibuses}
-                                                time={time}
-                                                      />}/>
+        <Route exact path="Inbound" element={<Inbound
+                                              ibuses={ibuses}
+                                              time={time}
+                                                            />}/>
 
-          <Route exact path="Outbound" element={<Outbound
-                                                time={time}
-                                                obuses={obuses}
+        <Route exact path="Outbound" element={<Outbound
+                                              time={time}
+                                              obuses={obuses}
                                                               />}/>
 
-          <Route exact path="The65" element={<The65
-                                                    time={time}
-                                                    schedule={schedule}
-                                                    formState={formState} 
-                                                    handleChange={handleChange}
-                                                    handleSubmit={handleSubmit}
-                                                    newValue={newValue}
-                                                    setNewValue={setNewValue}
+        <Route exact path="The65" element={<The65
+                                                  time={time}
+                                                  schedule={schedule}
+                                                  formState={formState} 
+                                                  handleChange={handleChange}
+                                                  handleSubmit={handleSubmit}
+                                                  newValue={newValue}
+                                                  setNewValue={setNewValue}
                                                                               />}/>
       </Routes>
-      </main>
+    </main>
   </div>
-  );
+)
 }
 
 export default App;

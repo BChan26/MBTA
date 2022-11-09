@@ -1,4 +1,6 @@
-//the console log on line 13 isn't targeting the values in the array - using the index number to hopefully make the call, stealing the index number, store to plug and chug
+//Schedule.jsx was a partially completed project at mapping the schedule for the line for the whole day, but was scrapped because of the API call; each stop had an ID# but not the name, so a 2nd axios call was needed to sync up, but the time lag and targeting the values wasn't working correctly.
+
+//the console log on line 14 isn't targeting the values in the array - using the index number to hopefully make the call, stealing the index number, store to plug and chug
 
 // import axios from 'axios'
 // import { useState, useEffect } from 'react'

@@ -50,7 +50,7 @@ const [obuses, setOutbound] = useState([])
 useEffect(() => {
   const getOutbound = async () => {
     const response = await axios.get(`${TIME_PATH}1287`)
-    // console.log(response.data.data)
+    console.log(response.data.data)
     setOutbound(response.data.data)
   }
 getOutbound()}, [])

@@ -47,7 +47,7 @@ if (!props.ibuses) {
                             <div     key={value.id}      className="BusData">
 
                             {/* <h4>Arrival Time: {value.attributes.departure_time.slice(11,16)}</h4> */}
-                            <h4>{(value.attributes.depature_time.slice(14,16)+60) - props.time.slice(3,6) } minutes away</h4>
+                            <h4>{(parseInt(value.attributes.depature_time.slice(14,16))+60) - props.time.slice(3,6) } minutes away</h4>
     
                             </div>
                         )

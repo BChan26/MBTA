@@ -1,5 +1,5 @@
 //Deconstructed each of the props being passed down, for more specificity
-export default function The65 ({formState, handleChange, handleSubmit, newValue, setNewValue, getSchedule, schedule, time}) {
+export default function The65 ({formState, handleChange, handleSubmit, newValue, setNewValue, schedule, time}) {
     if (!schedule) {
         return <h2>Loading...</h2>
     } 
@@ -87,8 +87,11 @@ export default function The65 ({formState, handleChange, handleSubmit, newValue,
                     // console.log(formState.stopID)
                     setNewValue(formState.stopID)
                     // console.log(newValue)
-                    handleSubmit()
-                    getSchedule(`${setNewValue}`)
+
+                    // getSchedule(`${setNewValue}`)
+                    // handleSubmit()
+                    //removed getSchedule from  props list since it's not being passed down, and line 91 is console.logged out. Seems like updating the variable for the axios call is achieved through line 88, where setNewValue is the function updating newValue, which is the state being fed into useEffect with the getSchedule
+                    //also console logged this handleSubmit out since it's not needed; handleSubmit is in line 12
 
                 }}>Get Times</button>
         </form>
